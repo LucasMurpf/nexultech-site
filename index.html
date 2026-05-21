@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexul Tech — Tecnologia · Automação · Resultados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#060D1A;
+  --navy2:#0A1628;
+  --navy3:#0F1E36;
+  --blue:#1A6FD4;
+  --blue2:#2E8AF0;
+  --blue3:#5AAEFF;
+  --silver:#A8B8CC;
+  --silver2:#C8D8E8;
+  --white:#EEF4FF;
+  --border:rgba(42,100,200,0.18);
+  --border2:rgba(42,100,200,0.35);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'Exo 2',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* CIRCUIT GRID BG */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(30,100,210,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,100,210,0.05) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;z-index:0
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 5%;
+  background:rgba(6,13,26,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-n{
+  width:38px;height:38px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-n svg{width:38px;height:38px}
+.nav-wordmark{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:3px;color:var(--white)}
+.nav-wordmark span{color:var(--silver);font-weight:400}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;letter-spacing:1.5px;color:var(--silver);text-decoration:none;text-transform:uppercase;font-family:'Rajdhani',sans-serif;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--blue3)}
+.nav-cta{
+  padding:.5rem 1.5rem;
+  border:1px solid var(--blue);color:var(--blue3);
+  text-decoration:none;font-size:12px;letter-spacing:2px;
+  text-transform:uppercase;font-family:'Rajdhani',sans-serif;font-weight:600;
+  transition:background .2s,color .2s;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  background:rgba(26,111,212,0.08);
+}
+.nav-cta:hover{background:var(--blue);color:#fff}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 5% 4rem;position:relative;z-index:1;
+  overflow:hidden;
+}
+.hero-content{max-width:680px;position:relative;z-index:2}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:600;
+  color:var(--blue3);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:2rem;
+  opacity:0;animation:fadeUp .7s .1s forwards;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;width:20px;background:var(--blue)}
+.hero-title{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(52px,8vw,96px);
+  font-weight:700;line-height:.95;letter-spacing:1px;
+  margin-bottom:1.5rem;
+  opacity:0;animation:fadeUp .7s .25s forwards;
+}
+.hero-title .line2{color:transparent;-webkit-text-stroke:1px var(--blue2)}
+.hero-title .accent{color:var(--blue3)}
+.hero-sub{
+  font-size:17px;color:var(--silver);line-height:1.8;
+  max-width:500px;margin-bottom:2.5rem;
+  opacity:0;animation:fadeUp .7s .4s forwards;
+}
+.hero-tagline{
+  font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:4px;color:var(--silver2);text-transform:uppercase;
+  margin-bottom:2.5rem;display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fadeUp .7s .35s forwards;
+}
+.hero-tagline .dot{color:var(--blue);font-size:18px}
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .7s .55s forwards;
+}
+.btn-primary{
+  padding:.85rem 2rem;background:var(--blue);color:#fff;
+  text-decoration:none;font-family:'Rajdhani',sans-serif;
+  font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  transition:background .2s,transform .2s;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-outline{
+  padding:.85rem 2rem;border:1px solid var(--border2);color:var(--silver2);
+  text-decoration:none;font-family:'Rajdhani',sans-serif;
+  font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  transition:border-color .2s,color .2s;display:inline-block;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+}
+.btn-outline:hover{border-color:var(--blue3);color:var(--blue3)}
+
+/* HERO METRICS */
+.hero-metrics{
+  display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;
+  border-top:1px solid var(--border);
+  opacity:0;animation:fadeUp .7s .7s forwards;
+  flex-wrap:wrap;
+}
+.metric-num{
+  font-family:'Rajdhani',sans-serif;font-size:40px;font-weight:700;
+  color:var(--blue3);line-height:1;
+}
+.metric-label{font-size:11px;color:var(--silver);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* HERO DECORATION */
+.hero-decor{
+  position:absolute;right:-5%;top:10%;width:550px;height:550px;
+  opacity:0;animation:fadeIn 1.2s .5s forwards;
+}
+
+/* SECTION BASE */
+section{position:relative;z-index:1;padding:6rem 5%}
+.section-label{
+  font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:600;
+  color:var(--blue3);letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;
+}
+.section-label::before{content:'';width:16px;height:2px;background:var(--blue)}
+.section-title{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(36px,5vw,58px);font-weight:700;
+  line-height:1;letter-spacing:1px;margin-bottom:1.2rem;
+}
+.section-sub{font-size:16px;color:var(--silver);line-height:1.75;max-width:540px;margin-bottom:3.5rem}
+
+/* SERVICES */
+.services-wrap{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border)}
+.service-card{
+  background:var(--navy2);padding:2.5rem 2rem;
+  position:relative;overflow:hidden;transition:background .3s;
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--blue);transform:scaleX(0);
+  transition:transform .4s;transform-origin:left;
+}
+.service-card:hover{background:rgba(26,111,212,0.07)}
+.service-card:hover::after{transform:scaleX(1)}
+.svc-icon{
+  width:46px;height:46px;border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.4rem;color:var(--blue3);
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  background:rgba(26,111,212,0.1);
+}
+.svc-title{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;margin-bottom:.6rem;letter-spacing:.5px}
+.svc-desc{font-size:14px;color:var(--silver);line-height:1.7}
+
+/* PRODUCT SECTION */
+.product-wrap{
+  background:var(--navy3);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.product-badge{
+  display:inline-block;
+  font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  padding:4px 14px;background:rgba(26,111,212,0.15);
+  border:1px solid var(--blue);color:var(--blue3);margin-bottom:1.5rem;
+}
+.product-title{
+  font-family:'Rajdhani',sans-serif;font-size:clamp(32px,4vw,52px);
+  font-weight:700;line-height:1;margin-bottom:1rem;letter-spacing:1px;
+}
+.product-title span{color:var(--blue3)}
+.product-desc{font-size:15px;color:var(--silver);line-height:1.8;margin-bottom:2rem}
+.product-features{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--silver2)}
+.feat-dot{width:6px;height:6px;background:var(--blue3);margin-top:6px;flex-shrink:0;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+.product-visual{
+  background:var(--navy2);border:1px solid var(--border2);
+  border-radius:4px;padding:2rem;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.pv-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:1rem;border-bottom:1px solid var(--border);
+}
+.pv-title{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;letter-spacing:1px;color:var(--silver2)}
+.pv-status{
+  font-size:11px;font-family:'Rajdhani',sans-serif;font-weight:600;
+  letter-spacing:2px;color:#4AE88A;display:flex;align-items:center;gap:5px;
+}
+.pv-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#4AE88A;animation:blink 2s infinite}
+.pv-beds{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bed-card{
+  background:var(--navy3);border:1px solid var(--border);
+  padding:.75rem;border-radius:3px;
+}
+.bed-num{font-family:'Rajdhani',sans-serif;font-size:11px;color:var(--silver);letter-spacing:2px;margin-bottom:.4rem}
+.bed-bar-wrap{background:rgba(255,255,255,0.06);height:6px;border-radius:3px;margin-bottom:.4rem}
+.bed-bar{height:6px;border-radius:3px;transition:width .3s}
+.bed-val{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600}
+.bed-ok{color:#4AE88A}.bed-warn{color:#FFBF00}.bed-crit{color:#FF5555}
+.pv-alert{
+  background:rgba(255,85,85,0.08);border:1px solid rgba(255,85,85,0.25);
+  padding:.6rem .85rem;font-size:12px;color:#FF8080;
+  font-family:'Rajdhani',sans-serif;font-weight:500;letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;
+}
+.pv-alert::before{content:'!';width:16px;height:16px;background:rgba(255,85,85,0.3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+
+/* AUTOMATION */
+.auto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1rem}
+.auto-card{
+  background:var(--navy2);border:1px solid var(--border);
+  padding:2rem;transition:border-color .3s,transform .3s;
+}
+.auto-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.auto-num{
+  font-family:'Rajdhani',sans-serif;font-size:48px;font-weight:700;
+  color:rgba(26,111,212,0.15);line-height:1;margin-bottom:.5rem;
+}
+.auto-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:.5rem;letter-spacing:.5px}
+.auto-desc{font-size:13px;color:var(--silver);line-height:1.7}
+
+/* CTA */
+.cta-section{
+  text-align:center;padding:7rem 5%;
+  border-top:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.cta-section .section-label{justify-content:center}
+.cta-section .section-title{margin-bottom:1rem}
+.cta-section .section-sub{margin:0 auto 2.5rem;text-align:center}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border);
+  padding:2rem 5%;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.footer-tagline{
+  font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:4px;color:rgba(168,184,204,0.4);text-transform:uppercase;
+}
+.footer-tagline .dot{color:var(--blue)}
+.footer-copy{font-size:11px;color:rgba(168,184,204,0.3);letter-spacing:1px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(20px)}}
+@keyframes fadeIn{to{opacity:1}from{opacity:0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+@media(max-width:900px){
+  .product-grid{grid-template-columns:1fr}
+  .hero-decor{display:none}
+}
+@media(max-width:640px){
+  nav{padding:1rem 5%}
+  .nav-links{display:none}
+  .hero{padding:7rem 5% 3rem}
+  section{padding:4rem 5%}
+  .hero-metrics{gap:1.5rem}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-n">
+      <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circuit left -->
+        <line x1="1" y1="10" x2="9" y2="10" stroke="#1A6FD4" stroke-width="1.2"/>
+        <circle cx="1" cy="10" r="2" fill="#1A6FD4"/>
+        <line x1="1" y1="18" x2="9" y2="18" stroke="#1A6FD4" stroke-width="1.2"/>
+        <circle cx="1" cy="18" r="2" fill="#2E8AF0"/>
+        <line x1="1" y1="26" x2="9" y2="26" stroke="#1A6FD4" stroke-width="1.2"/>
+        <circle cx="1" cy="26" r="2" fill="#1A6FD4"/>
+        <!-- Left bar of N -->
+        <rect x="9" y="3" width="7" height="30" fill="#2E8AF0"/>
+        <!-- Diagonal bar -->
+        <polygon points="16,3 23,3 30,30 23,30" fill="#5AAEFF" opacity="0.7"/>
+        <!-- Right bar of N -->
+        <rect x="28" y="3" width="7" height="30" fill="#A8B8CC"/>
+        <!-- Circuit right -->
+        <line x1="35" y1="10" x2="43" y2="10" stroke="#A8B8CC" stroke-width="1.2"/>
+        <circle cx="43" cy="10" r="2" fill="#A8B8CC"/>
+        <line x1="35" y1="18" x2="43" y2="18" stroke="#A8B8CC" stroke-width="1.2"/>
+        <circle cx="43" cy="18" r="2" fill="#C8D8E8"/>
+        <line x1="35" y1="26" x2="43" y2="26" stroke="#A8B8CC" stroke-width="1.2"/>
+        <circle cx="43" cy="26" r="2" fill="#A8B8CC"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">NEXUL<span>TECH</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#automacao">Automação</a></li>
+    <li><a href="#produto">Produto</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a class="nav-cta" href="#contato">Fale conosco</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Nexul Tech</div>
+    <div class="hero-tagline">
+      Tecnologia <span class="dot">·</span> Automação <span class="dot">·</span> Resultados
+    </div>
+    <h1 class="hero-title">
+      Inovação<br>
+      <span class="line2">que</span><br>
+      <span class="accent">conecta.</span>
+    </h1>
+    <p class="hero-sub">Software, Inteligência Artificial, IoT e Automação integrados para transformar como empresas e instituições operam.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#servicos">Nossos serviços</a>
+      <a class="btn-outline" href="#produto">Ver produto</a>
+    </div>
+    <div class="hero-metrics">
+      <div>
+        <div class="metric-num">4+</div>
+        <div class="metric-label">Áreas de atuação</div>
+      </div>
+      <div>
+        <div class="metric-num">24/7</div>
+        <div class="metric-label">Monitoramento</div>
+      </div>
+      <div>
+        <div class="metric-num">100%</div>
+        <div class="metric-label">Tecnologia nacional</div>
+      </div>
+      <div>
+        <div class="metric-num">IoT</div>
+        <div class="metric-label">Conectividade real</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero decoration: circuit SVG -->
+  <div class="hero-decor">
+    <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="200" stroke="rgba(26,111,212,0.08)" stroke-width="1"/>
+      <circle cx="250" cy="250" r="140" stroke="rgba(26,111,212,0.1)" stroke-width="1"/>
+      <circle cx="250" cy="250" r="80" stroke="rgba(26,111,212,0.15)" stroke-width="1"/>
+      <!-- Nodes -->
+      <circle cx="250" cy="50" r="6" fill="#1A6FD4"/>
+      <circle cx="450" cy="250" r="6" fill="#2E8AF0"/>
+      <circle cx="250" cy="450" r="6" fill="#1A6FD4"/>
+      <circle cx="50" cy="250" r="6" fill="#2E8AF0"/>
+      <circle cx="390" cy="110" r="4" fill="#5AAEFF" opacity=".6"/>
+      <circle cx="390" cy="390" r="4" fill="#5AAEFF" opacity=".6"/>
+      <circle cx="110" cy="390" r="4" fill="#5AAEFF" opacity=".6"/>
+      <circle cx="110" cy="110" r="4" fill="#5AAEFF" opacity=".6"/>
+      <!-- Lines -->
+      <line x1="250" y1="50" x2="450" y2="250" stroke="rgba(26,111,212,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+      <line x1="450" y1="250" x2="250" y2="450" stroke="rgba(26,111,212,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+      <line x1="250" y1="450" x2="50" y2="250" stroke="rgba(26,111,212,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+      <line x1="50" y1="250" x2="250" y2="50" stroke="rgba(26,111,212,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+      <!-- Center -->
+      <circle cx="250" cy="250" r="18" fill="rgba(26,111,212,0.15)" stroke="#1A6FD4" stroke-width="1"/>
+      <circle cx="250" cy="250" r="8" fill="#2E8AF0"/>
+    </svg>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-wrap" id="servicos">
+  <div class="section-label reveal">Serviços</div>
+  <h2 class="section-title reveal">Tecnologia completa.<br>Do dado ao resultado.</h2>
+  <p class="section-sub reveal">Atuamos em todas as camadas do seu negócio — da estratégia à implementação.</p>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3 class="svc-title">Software & SaaS</h3>
+      <p class="svc-desc">Sistemas sob medida, plataformas web e aplicações escaláveis para a realidade do seu negócio.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10"/><circle cx="19" cy="5" r="3"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3 class="svc-title">Inteligência Artificial</h3>
+      <p class="svc-desc">Modelos preditivos, automação inteligente e análise de dados para decisões mais rápidas e precisas.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+      </div>
+      <h3 class="svc-title">IoT & Conectividade</h3>
+      <p class="svc-desc">Sensores, dispositivos embarcados e dashboards em tempo real para monitorar o que importa, onde quer que esteja.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg>
+      </div>
+      <h3 class="svc-title">Automação</h3>
+      <p class="svc-desc">Automatizamos processos repetitivos, fluxos de trabalho e integrações entre sistemas para liberar o potencial da sua equipe.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 class="svc-title">Consultoria</h3>
+      <p class="svc-desc">Diagnóstico, estratégia e implementação de tecnologia para empresas que querem crescer com eficiência e segurança.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOMAÇÃO -->
+<section id="automacao">
+  <div class="section-label reveal">Automação</div>
+  <h2 class="section-title reveal">Menos manual.<br><span style="color:var(--blue3)">Mais resultado.</span></h2>
+  <p class="section-sub reveal">Identificamos onde o tempo da sua equipe está sendo desperdiçado e automatizamos com precisão.</p>
+  <div class="auto-grid">
+    <div class="auto-card reveal">
+      <div class="auto-num">01</div>
+      <h3 class="auto-title">Automação de processos</h3>
+      <p class="auto-desc">Eliminamos tarefas repetitivas com robôs de software (RPA) e fluxos inteligentes que trabalham 24 horas por dia.</p>
+    </div>
+    <div class="auto-card reveal">
+      <div class="auto-num">02</div>
+      <h3 class="auto-title">Integração de sistemas</h3>
+      <p class="auto-desc">Conectamos ERPs, CRMs, APIs e plataformas distintas em um fluxo de dados único e confiável.</p>
+    </div>
+    <div class="auto-card reveal">
+      <div class="auto-num">03</div>
+      <h3 class="auto-title">Alertas & monitoramento</h3>
+      <p class="auto-desc">Sistemas que identificam anomalias e notificam a equipe certa, no momento certo, antes que vire problema.</p>
+    </div>
+    <div class="auto-card reveal">
+      <div class="auto-num">04</div>
+      <h3 class="auto-title">Relatórios automáticos</h3>
+      <p class="auto-desc">Dashboards e relatórios gerados automaticamente com dados em tempo real — sem planilha manual, sem retrabalho.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO -->
+<section class="product-wrap" id="produto">
+  <div class="product-grid">
+    <div>
+      <div class="section-label reveal">Nosso primeiro produto</div>
+      <div class="product-badge reveal">IoT · Saúde · Monitoramento</div>
+      <h2 class="product-title reveal">Monitor de<br><span>Soro</span></h2>
+      <p class="product-desc reveal">Dispositivo IoT que monitora o nível de soro em tempo real, conectado ao Wi-Fi e integrado a um dashboard web. Alertas automáticos para a equipe de enfermagem antes que o soro acabe.</p>
+      <div class="product-features reveal">
+        <div class="feat"><div class="feat-dot"></div><span>Sensor de peso de precisão ±2g integrado ao suporte</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Conectividade Wi-Fi 2.4GHz com protocolo MQTT</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Dashboard web com visão de todos os leitos em tempo real</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Alertas automáticos via app antes do fim do soro</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Instalação sem obra — encaixa em qualquer suporte existente</span></div>
+        <div class="feat"><div class="feat-dot"></div><span>Histórico completo de cada infusão com timestamp</span></div>
+      </div>
+      <a class="btn-primary" href="#contato">Solicitar demonstração</a>
+    </div>
+
+    <!-- Dashboard preview -->
+    <div class="product-visual reveal">
+      <div class="pv-header">
+        <span class="pv-title">MONITOR DE SORO — DASHBOARD</span>
+        <span class="pv-status">ONLINE</span>
+      </div>
+      <div class="pv-beds">
+        <div class="bed-card">
+          <div class="bed-num">LEITO 01</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:78%;background:#4AE88A"></div></div>
+          <div class="bed-val bed-ok">78% — Normal</div>
+        </div>
+        <div class="bed-card">
+          <div class="bed-num">LEITO 02</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:22%;background:#FFBF00"></div></div>
+          <div class="bed-val bed-warn">22% — Atenção</div>
+        </div>
+        <div class="bed-card">
+          <div class="bed-num">LEITO 03</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:91%;background:#4AE88A"></div></div>
+          <div class="bed-val bed-ok">91% — Normal</div>
+        </div>
+        <div class="bed-card">
+          <div class="bed-num">LEITO 04</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:8%;background:#FF5555"></div></div>
+          <div class="bed-val bed-crit">8% — Crítico</div>
+        </div>
+        <div class="bed-card">
+          <div class="bed-num">LEITO 05</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:55%;background:#4AE88A"></div></div>
+          <div class="bed-val bed-ok">55% — Normal</div>
+        </div>
+        <div class="bed-card">
+          <div class="bed-num">LEITO 06</div>
+          <div class="bed-bar-wrap"><div class="bed-bar" style="width:43%;background:#4AE88A"></div></div>
+          <div class="bed-val bed-ok">43% — Normal</div>
+        </div>
+      </div>
+      <div class="pv-alert">Leito 04 — soro crítico. Intervenção necessária.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="section-label">Contato</div>
+  <h2 class="section-title">Pronto para o<br><span style="color:var(--blue3)">próximo nível?</span></h2>
+  <p class="section-sub">Fale com a equipe Nexul Tech e descubra como a tecnologia pode transformar a sua operação.</p>
+  <div class="cta-btns">
+    <a class="btn-primary" href="mailto:contato@nexultech.com.br">Enviar mensagem</a>
+    <a class="btn-outline" href="https://wa.me/5541999999999">WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="nav-wordmark" style="font-size:16px">NEXUL<span>TECH</span></span>
+  <div class="footer-tagline">Tecnologia <span class="dot">·</span> Automação <span class="dot">·</span> Resultados</div>
+  <div class="footer-copy">© 2026 Nexul Tech · Todos os direitos reservados</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 60 ? 'rgba(6,13,26,0.97)' : 'rgba(6,13,26,0.85)';
+});
+</script>
+</body>
+</html>
