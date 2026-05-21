@@ -252,6 +252,59 @@ section{position:relative;z-index:1;padding:6rem 5%}
 .auto-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:.5rem;letter-spacing:.5px}
 .auto-desc{font-size:13px;color:var(--silver);line-height:1.7}
 
+/* PROJETOS */
+.projects-wrap{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.5rem}
+.proj-card{
+  background:var(--navy3);border:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.proj-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.proj-preview{
+  position:relative;background:#1a0505;
+  padding:1.4rem 1.4rem .8rem;border-bottom:1px solid var(--border);
+  overflow:hidden;min-height:220px;display:flex;align-items:center;justify-content:center;
+}
+.proj-preview::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(176,28,28,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(176,28,28,0.05) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+/* totem mock */
+.tm-wrap{position:relative;z-index:1;width:200px;background:#2a0a0a;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.tm-badge{font-family:'Rajdhani',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(192,144,144,.6);text-transform:uppercase;margin-bottom:8px}
+.tm-title{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff5f5;margin-bottom:2px}
+.tm-sub{font-size:9px;color:rgba(192,144,144,.7);margin-bottom:10px;line-height:1.4}
+.tm-input{background:rgba(255,255,255,0.06);border:1px solid rgba(211,47,47,0.4);border-radius:4px;padding:6px 8px;font-family:monospace;font-size:11px;color:#fff5f5;letter-spacing:2px;margin-bottom:8px;width:100%;text-align:center}
+.tm-kbd{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:8px}
+.tm-key{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:4px 0;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;color:#fff5f5;text-align:center;cursor:default}
+.tm-key.wide{grid-column:span 3}
+.tm-key.red{background:rgba(211,47,47,0.2);border-color:rgba(211,47,47,0.4);color:#ef5350}
+.tm-steps{display:flex;gap:4px;margin-top:6px}
+.tm-step{flex:1;height:2px;border-radius:1px;background:rgba(255,255,255,0.1)}
+.tm-step.active{background:#b01c1c}
+.proj-body{padding:1.6rem 1.8rem;flex:1;display:flex;flex-direction:column;gap:1rem}
+.proj-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.proj-tag{
+  font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;padding:3px 10px;
+  background:rgba(26,111,212,0.12);border:1px solid var(--blue);color:var(--blue3);
+}
+.proj-tag.alt{background:rgba(74,232,138,0.08);border-color:rgba(74,232,138,0.3);color:#4AE88A}
+.proj-title{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;letter-spacing:.5px;line-height:1.1}
+.proj-desc{font-size:13px;color:var(--silver);line-height:1.75;flex:1}
+.proj-stack{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
+.proj-pill{
+  font-size:10px;font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:1px;
+  padding:3px 8px;background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);color:var(--silver);
+}
+.proj-feats{display:flex;flex-direction:column;gap:.4rem}
+.proj-feat{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--silver2)}
+.proj-feat-dot{width:5px;height:5px;background:var(--blue3);flex-shrink:0;margin-top:4px;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+
 /* CTA */
 .cta-section{
   text-align:center;padding:7rem 5%;
@@ -333,6 +386,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#automacao">Automação</a></li>
+    <li><a href="#projetos">Projetos</a></li>
     <li><a href="#produto">Produto</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
@@ -535,6 +589,92 @@ footer{
       </div>
       <div class="pv-alert">Leito 04 — soro crítico. Intervenção necessária.</div>
     </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section class="projects-wrap" id="projetos">
+  <div class="section-label reveal">Projetos</div>
+  <h2 class="section-title reveal">Soluções que<br><span style="color:var(--blue3)">já desenvolvemos.</span></h2>
+
+
+  <div class="projects-grid reveal">
+
+    <!-- CARD: TOTEM -->
+    <div class="proj-card">
+      <div class="proj-preview">
+        <div class="tm-wrap">
+          <div class="tm-badge">Ambulatório · Autoatendimento</div>
+          <div class="tm-title">Digite seu CPF</div>
+          <div class="tm-sub">Informe seu CPF para verificarmos seu agendamento de hoje.</div>
+          <div class="tm-input">___.___.___-__</div>
+          <div class="tm-kbd">
+            <div class="tm-key">1</div>
+            <div class="tm-key">2</div>
+            <div class="tm-key">3</div>
+            <div class="tm-key">4</div>
+            <div class="tm-key">5</div>
+            <div class="tm-key">6</div>
+            <div class="tm-key">7</div>
+            <div class="tm-key">8</div>
+            <div class="tm-key">9</div>
+            <div class="tm-key">⌫</div>
+            <div class="tm-key">0</div>
+            <div class="tm-key red">✓</div>
+          </div>
+          <div class="tm-steps">
+            <div class="tm-step active"></div>
+            <div class="tm-step"></div>
+            <div class="tm-step"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-body">
+        <div class="proj-tags">
+          <span class="proj-tag">IoT</span>
+          <span class="proj-tag">Saúde</span>
+          <span class="proj-tag">Automação</span>
+          <span class="proj-tag alt">Projeto desenvolvido</span>
+        </div>
+        <div>
+          <div class="proj-title">Totem de Autoatendimento<br>Ambulatorial</div>
+        </div>
+        <p class="proj-desc">Sistema de check-in para ambulatório hospitalar via totem touchscreen. O paciente digita o CPF, confirma o agendamento do dia e já está na fila — sem passar pela recepção, sem papel, sem espera.</p>
+        <div class="proj-feats">
+          <div class="proj-feat"><div class="proj-feat-dot"></div><span>Identificação por CPF com consulta ao sistema hospitalar em tempo real</span></div>
+          <div class="proj-feat"><div class="proj-feat-dot"></div><span>Atendimento gerado automaticamente no prontuário ao confirmar chegada</span></div>
+          <div class="proj-feat"><div class="proj-feat-dot"></div><span>Impressão automática de etiqueta de identificação com número de atendimento</span></div>
+          <div class="proj-feat"><div class="proj-feat-dot"></div><span>Fluxo de 3 etapas — do CPF à confirmação em segundos, sem mouse ou teclado</span></div>
+          <div class="proj-feat"><div class="proj-feat-dot"></div><span>Retorno automático ao início após inatividade — projetado para alta rotatividade</span></div>
+        </div>
+        <div class="proj-stack">
+          <span class="proj-pill">Python</span>
+          <span class="proj-pill">Flask</span>
+          <span class="proj-pill">Oracle 19c</span>
+          <span class="proj-pill">PL/SQL</span>
+          <span class="proj-pill">HTML / CSS / JS</span>
+          <span class="proj-pill">REST API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD PLACEHOLDER -->
+    <div class="proj-card" style="opacity:.45;pointer-events:none">
+      <div class="proj-preview" style="min-height:220px;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(90,174,255,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(168,184,204,0.3);text-transform:uppercase">Em breve</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="proj-tag">Próximo projeto</span></div>
+        <div class="proj-title">Novo caso em<br>desenvolvimento</div>
+        <p class="proj-desc">Cada solução que entregamos vira referência para o próximo. Fale com a gente e descubra como podemos transformar o seu processo.</p>
+        <div class="proj-stack">
+          <span class="proj-pill">A definir</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
